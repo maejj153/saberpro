@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Panel - Gestión Saber Pro</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a th:href="@{/estudiante/dashboard}" class="navbar-brand">📚 Gestión Saber Pro</a>
+            <ul class="navbar-menu">
+                <li><a th:href="@{/estudiante/beneficios}">🎁 Incentivos</a></li>
+                <li><a th:href="@{/estudiante/resultados/todos}">📊 Resultados</a></li>
+                <li><a th:href="@{/estudiante/buscar}">🔎 Consultar</a></li>
+                <li><a th:href="@{/estudiante/dashboard}">🏠 Inicio</a></li>
+            </ul>
+            <div class="navbar-user">
+                <span>👤 <span th:text="${usuarioNombre}">Usuario</span></span>
+                <a th:href="@{/logout}" class="btn-logout">Salir</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="mt-4 mb-4" style="color: #5E35B1;">👋 Bienvenido al Sistema</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card" style="cursor: pointer;" onclick="window.location.href='/estudiante/buscar'">
+                <div style="font-size: 3.5rem; margin-bottom: 1rem;">🔎</div>
+                <h3 style="color: #5E35B1;">Consultar Nota</h3>
+                <p style="color: #757575; margin: 1rem 0;">Busca tu resultado por documento o código</p>
+                <span class="btn btn-primary">Ir →</span>
+            </div>
+
+            <div class="stat-card" style="cursor: pointer;" onclick="window.location.href='/estudiante/resultados/todos'">
+                <div style="font-size: 3.5rem; margin-bottom: 1rem;">📊</div>
+                <h3 style="color: #5E35B1;">Ver Resultados</h3>
+                <p style="color: #757575; margin: 1rem 0;">Consulta todas las notas registradas</p>
+                <span class="btn btn-info">Ver →</span>
+            </div>
+
+            <div class="stat-card" style="cursor: pointer;" onclick="window.location.href='/estudiante/beneficios'">
+                <div style="font-size: 3.5rem; margin-bottom: 1rem;">🎁</div>
+                <h3 style="color: #5E35B1;">Incentivos</h3>
+                <p style="color: #757575; margin: 1rem 0;">Conoce los beneficios disponibles</p>
+                <span class="btn btn-success">Explorar →</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">📋 Tabla de Incentivos según Puntaje</div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Rango de Puntos</th>
+                        <th>Beneficio Obtenido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background-color: #E8F5E9;">
+                        <td><strong>171 o más</strong></td>
+                        <td>Exoneración total + Nota 5.0 + 100% beca ceremonia</td>
+                    </tr>
+                    <tr style="background-color: #E3F2FD;">
+                        <td><strong>151 a 170</strong></td>
+                        <td>Exoneración + Nota 4.7 + 50% beca ceremonia</td>
+                    </tr>
+                    <tr style="background-color: #FFF8E1;">
+                        <td><strong>120 a 150</strong></td>
+                        <td>Exoneración trabajo de grado + Nota 4.5</td>
+                    </tr>
+                    <tr style="background-color: #FFEBEE;">
+                        <td><strong>Menos de 120</strong></td>
+                        <td>❌ Sin beneficios - Debe repetir examen</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>

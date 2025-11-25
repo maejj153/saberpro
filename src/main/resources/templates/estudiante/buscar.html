@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Consultar Nota - Gestión Saber Pro</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a th:href="@{/estudiante/dashboard}" class="navbar-brand">📚 Gestión Saber Pro</a>
+            <ul class="navbar-menu">
+                <li><a th:href="@{/estudiante/beneficios}">🎁 Incentivos</a></li>
+                <li><a th:href="@{/estudiante/resultados/todos}">📊 Resultados</a></li>
+                <li><a th:href="@{/estudiante/buscar}">🔎 Consultar</a></li>
+                <li><a th:href="@{/estudiante/dashboard}">🏠 Inicio</a></li>
+            </ul>
+            <div class="navbar-user">
+                <span>👤 <span th:text="${usuarioNombre}">Usuario</span></span>
+                <a th:href="@{/logout}" class="btn-logout">Salir</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <h1 class="mt-4 mb-4" style="color: #5E35B1;">🔎 Consultar mi Resultado</h1>
+
+        <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <div class="card-header" style="text-align: center;">Ingresa tu Información</div>
+
+            <form th:action="@{/estudiante/resultado}" method="post" style="padding: 1rem;">
+                <div class="form-group">
+                    <label for="identificacion" class="form-label">🔢 Documento o Código ICFES</label>
+                    <input type="text" 
+                           id="identificacion" 
+                           name="identificacion" 
+                           class="form-control" 
+                           placeholder="Ejemplo: EK20183007722"
+                           required
+                           autofocus
+                           style="text-align: center; font-size: 1.2rem; padding: 1rem;">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+                    🔍 Buscar mi Resultado
+                </button>
+            </form>
+        </div>
+
+        <div class="card" style="max-width: 600px; margin: 2rem auto;">
+            <div class="card-header">❓ ¿Cómo buscar?</div>
+            <div style="padding: 0.5rem;">
+                <p style="margin: 0.5rem 0;">Puedes utilizar cualquiera de estas opciones:</p>
+                <ul style="margin-left: 1.5rem; color: #757575;">
+                    <li><strong>Cédula:</strong> Tu número de documento</li>
+                    <li><strong>Código ICFES:</strong> Número de registro (Ej: EK20183007722)</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
